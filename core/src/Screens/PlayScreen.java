@@ -32,7 +32,7 @@ public class PlayScreen implements Screen{
 	@Override
 	public void resize(int width, int height) {
 		// TODO Auto-generated method stub
-		// Comment
+		// Comment cocos2d-x
 	}
 
 	@Override
