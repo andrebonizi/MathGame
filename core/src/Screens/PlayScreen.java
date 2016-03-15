@@ -20,7 +20,7 @@ public class PlayScreen implements Screen{
 		this.game = game;
 		texture = new Texture("badlogic.jpg");
 		gamecam = new OrthographicCamera();
-		gamePort = new FitViewport(800, 480, gamecam);
+		gamePort = new FitViewport(MathGame.V_WIDTH, MathGame.V_HEIGHT, gamecam);
 	}
 	
 	@Override
