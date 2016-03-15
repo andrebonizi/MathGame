@@ -9,18 +9,22 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.coco.mathgame.MathGame;
 
+import Scenes.BattleHud;
+
 public class PlayScreen implements Screen{
 
 	private MathGame game;
-	Texture texture;
+	//Texture texture;
 	private OrthographicCamera gamecam;
 	private Viewport gamePort;
+	private BattleHud battleHud;
 	
 	public PlayScreen(MathGame game){
 		this.game = game;
-		texture = new Texture("badlogic.jpg");
+		//texture = new Texture("badlogic.jpg");
 		gamecam = new OrthographicCamera();
 		gamePort = new FitViewport(MathGame.V_WIDTH, MathGame.V_HEIGHT, gamecam);
+		battleHud = new BattleHud(game.batch);
 	}
 	
 	@Override
@@ -29,12 +33,15 @@ public class PlayScreen implements Screen{
 
 	@Override
 	public void render(float delta) {
-		Gdx.gl.glClearColor(1, 0, 0, 1);
+		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		game.batch.setProjectionMatrix(gamecam.combined);
-		game.batch.begin();
-		game.batch.draw(texture, 0, 0);
-		game.batch.end();
+		
+		game.batch.setProjectionMatrix(battleHud.stage.getCamera().combined);
+		battleHud.stage.draw();
+		//game.batch.setProjectionMatrix(gamecam.combined);
+		//game.batch.begin();
+		//game.batch.draw(texture, 0, 0);
+		//game.batch.end();
 	}
 
 	@Override
