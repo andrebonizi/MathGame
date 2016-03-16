@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="240" height="13" tilewidth="16" tileheight="16" nextobjectid="5">
+ <tileset firstgid="1" name="suikoden2_town" tilewidth="16" tileheight="16" tilecount="480" columns="30">
+  <image source="suikoden2_town.png" trans="ff638c" width="480" height="256"/>
+ </tileset>
+ <layer name="Ground" width="240" height="13">
+  <data encoding="base64" compression="zlib">
+   eJzt1beRQlEQRNEhAEQeC1gkAWwesOSBMBBBIAxEELAYiCAQBiIIxA0B41W9+kMbx2i3q6cmbWYZZJFD2nkupUT8+GHTeRRQNP85dt8iIZXZdAVV/Jr/HLtvkZBqbLqOPzTMf47dt0hITTbdQhsd859j9y0S0pBNjzDGxPzn2H2LhLRk0yv8Y23+c+y+RUI6sOkjTjib/xy7b5GQHmz6iRfsC3LsvkXkc13Otoc+Bvq/Ioky5WZnmGOh+xVJlA03u8UOe92vSKJcuNkrbrjrfsWZNzydK28=
+  </data>
+ </layer>
+ <objectgroup name="Ground">
+  <object id="1" x="0" y="160" width="896" height="48"/>
+ </objectgroup>
+ <layer name="Wall" width="240" height="13">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20KP6AAAAAAAAAAAAAAAAC+BjDAAAE=
+  </data>
+ </layer>
+ <objectgroup name="Wall">
+  <object id="2" x="896" y="144" width="64" height="64"/>
+  <object id="4" x="0" y="96" width="960" height="48"/>
+ </objectgroup>
+</map>

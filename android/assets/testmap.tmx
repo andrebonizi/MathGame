@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="240" height="13" tilewidth="16" tileheight="16" nextobjectid="13">
+ <tileset firstgid="1" name="suikoden2_town" tilewidth="16" tileheight="16" tilecount="480" columns="30">
+  <image source="../../../../../Pictures/Sprites/Tiles/suikoden2_town.png" trans="ff638c" width="480" height="256"/>
+ </tileset>
+ <tileset firstgid="481" name="suikoden2_town" tilewidth="16" tileheight="16" tilecount="480" columns="30">
+  <image source="suikoden2_town.png" trans="ff638c" width="480" height="256"/>
+ </tileset>
+ <layer name="Ground" width="240" height="13">
+  <data encoding="base64" compression="zlib">
+   eJzt2slrFEEUx/Eq7xmNkOTq3VEhy8EF746KMR5c744KMR5c70Y9uIDr3aiIC5j/IC4HFzD/gdtB/SNcvo/posuaqp4FJwM97/Chqh5F92PoX1MdMmSMqWA11mAYR1HHMRzP5vWgdgKPbWsvPIsF+4aCPiqR9XCb9wxNKlVS68lEFRuwEZtwEfO4hMvZfD6oXWkzSx9tI7syLhfsC/uoRtbSWyrn4TtI86sGwQ6e9Rp2Yhd24z4W8AAPs/lCUHvUQX6dovyGfdQia+ktlfPwHaT5VYMgPCvLuXgJL/EKryPrNxjvIL/LtnV+U2d2fy29pXIevoM0v2oQhGdlORd/wmd8wdfI+hum/3N+U2d2fy29dfNt3u/fWKleCc/Kci7+hd/4A2Ob1zLOdpjfVn+/Sp3Z/bX01s23eb9/Y6V6ZYRnfdQzhs3Ut2ArtuEwjmRzV1+Fq+y9ZtJjxeb5XcxILbY37CNGemv329xd97rp/2+sVK9MyPNt8oxOMd/PeAAHcQjncSGbu/o6PGHvU5Meq/bf/Mootdhe6cO9G/x+Jr269LZkGt/iNwqMe9d9pvlVJbaX53vG5Bndx/w04xmcxTncxb1s7urb8Za970x6rNk8v47UYnulD/du8PuZ8erSm/sWf15g2rvue82vKrGTPN9zJs/oKeY3GW/hNu5gLbU9pjF3dfGd2g+THuu2+e9XUovtdX3MBf34NenNfYt/KDDrXfen5leV2GgPjdnm/78a6fE9w/vr+Vmp7kzZPLfOxArfX8/PSnVH8hN+/650fvX8rMrsL7CkQXs=
+  </data>
+ </layer>
+ <layer name="Object" width="240" height="13">
+  <data encoding="base64" compression="zlib">
+   eJzt1ssuA1Ecx/HOAyiWCFuXFokNwtatSGysWLoUiT1bWjwBWzrlAdjTJh4Aa9rEC3gBl2/T03QyiYn2TJpof9/kkzlzJpnTLv7JRCL114s+z9Xbi/O7fgxgEEOIORY/QilVV1OY9ly9Bc3vDGYxh/kaZ7cNUbSjw6yjvr1Oq3+lVGu0GvAsaH5LNrCJrRrnN4Y4htFl1nHP3ghG6/kzSrVY3egJeF6Z1TBbQAKLGDfrhGdvCcvhHqlUUzaByQafuY0kdrBr1knf3l6Df5NS/7Gg7+dSH3/cq6UU0jjBqVmnfXtnlmcopcod8f18jBTSIXxLZ+Aii2uzdn17N/bHKKXokpm9QgZuCPObQx63vOsOa1h3qvePPBuzP0YpRffM1ANyyIcwvwUU8cS7nnGAQ6d6/86zFftjlFL0yky9oYBiCPP7iS98m+s577xwyvcV+/bHKKWUUkoppZRqsn4AV7VRaw==
+  </data>
+ </layer>
+ <objectgroup name="Ground">
+  <object id="4" x="0" y="175.667" width="448.67" height="32"/>
+  <object id="5" x="448.333" y="176" width="447.333" height="31.6667"/>
+  <object id="6" x="448.333" y="176" width="447.333" height="31.6667"/>
+ </objectgroup>
+ <objectgroup name="Wall">
+  <object id="9" x="0" y="95.6667" width="895.667" height="64.3333"/>
+  <object id="11" x="895.667" y="95.6667" width="16" height="112"/>
+  <object id="12" x="341" y="43"/>
+ </objectgroup>
+</map>
