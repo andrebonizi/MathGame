@@ -7,13 +7,13 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.coco.mathgame.MathGame;
 
-public class BattleHud implements Disposable{
+import Logic.Question;
 
+public class StartScene {
 	public Stage stage;
 	private Viewport viewport;
 	
@@ -24,13 +24,10 @@ public class BattleHud implements Disposable{
 	Label playerHpLabel;
 	Label enemyHpLabel;
 	
-	public BattleHud(SpriteBatch sb){
+	public StartScene(SpriteBatch sb){
 		viewport = new FitViewport(MathGame.V_WIDTH, MathGame.V_HEIGHT, new OrthographicCamera());
 		stage = new Stage(viewport, sb);
-		
-		playerHp = 100;
-		enemyHp = 100;
-		
+			
 		Table table = new Table();
 		table.top();
 		table.setFillParent(true);
@@ -41,10 +38,7 @@ public class BattleHud implements Disposable{
 		table.add(playerHpLabel).expandX().padTop(10);
 		table.add(enemyHpLabel).expandX().padTop(10);
 		stage.addActor(table);
+	
 	}
 	
-	@Override
-	public void dispose() {
-		stage.dispose();	
-	}
 }
