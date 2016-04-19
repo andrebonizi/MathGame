@@ -81,10 +81,10 @@ public class PlayScreen implements Screen{
 	}
 
 	public void handleInput(float dt){
-		if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) // && player.b2body.getLinearVelocity().x <= 2 ## to limit velocity
+		if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) && player.b2body.getLinearVelocity().x <= 3) // && player.b2body.getLinearVelocity().x <= 2 ## to limit velocity
 			player.b2body.applyLinearImpulse(new Vector2(0.1f,0), player.b2body.getWorldCenter(), true);
 			
-		if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) // && player.b2body.getLinearVelocity().x >= -2 ## to limit velocity
+		if (Gdx.input.isKeyPressed(Input.Keys.LEFT) && player.b2body.getLinearVelocity().x >= -3) //  ## to limit velocity
 			player.b2body.applyLinearImpulse(new Vector2(-0.1f,0), player.b2body.getWorldCenter(), true);
 	}
 	
