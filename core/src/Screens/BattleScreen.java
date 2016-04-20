@@ -29,7 +29,7 @@ import Sprites.PortalSign;
 import Tools.B2WorldCreator;
 import Tools.WorldContactListener;
 
-public class PlayScreen implements Screen{
+public class BattleScreen extends PlayScreen{
 
 	private MathGame game;
 	private TextureAtlas atlas;
@@ -52,35 +52,17 @@ public class PlayScreen implements Screen{
 	// sprites
 	private Array<Item> items;
 	private LinkedBlockingQueue<ItemDef> itemsToSpawn; 
-	private String portalDest;
 	
-	public PlayScreen(MathGame game){
-		portalDest = new String("");
+	public BattleScreen(MathGame game){
+		super(game);
 		atlas = new TextureAtlas("MathAsset.pack");
-		this.game = game;
-		//texture = new Texture("badlogic.jpg");
-		gamecam = new OrthographicCamera();
-		gamePort = new FitViewport(MathGame.V_WIDTH / MathGame.PPM, MathGame.V_HEIGHT / MathGame.PPM, gamecam);
 		
-		//battleHud = new BattleHud(game.batch);
+		battleHud = new BattleHud(game.batch);
 		
 		maploader = new TmxMapLoader();
 		map = maploader.load("Stage1.tmx");
 		renderer = new OrthogonalTiledMapRenderer(map, 1 / MathGame.PPM);
 		
-		gamecam.position.set(gamePort.getWorldWidth() , gamePort.getWorldHeight() / 2, 0);
-	
-		world = new World(new Vector2(0,-10), true);
-		b2dr = new Box2DDebugRenderer();
-		
-		creator = new B2WorldCreator(this);
-		
-		player = new Player(this);
-		
-		world.setContactListener(new WorldContactListener());
-		
-		items = new Array<Item>();
-		itemsToSpawn = new LinkedBlockingQueue<ItemDef>();		
 	}
 	
 	public void spawnItem(ItemDef idef){
@@ -137,44 +119,28 @@ public class PlayScreen implements Screen{
 	public void render(float delta) {
 		update(delta);
 		
-		Gdx.gl.glClearColor(1, 1,1, 1);
+		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
 		renderer.render();
 		
-		//b2dr.render(world, gamecam.combined);
+		b2dr.render(world, gamecam.combined);
 		
 		game.batch.setProjectionMatrix(gamecam.combined);
 		game.batch.begin();
 		
-		for(Enemy e: creator.getShadows()){
-			e.setSize(2,4);
+		for(Enemy e: creator.getShadows())
 			e.draw(game.batch);
-		}
 		
 		for(Item i : items)
 			i.draw(game.batch);
 		
-		player.setSize(2,4);
 		player.draw(game.batch);
 		
 		game.batch.end();
 		
 		//game.batch.setProjectionMatrix(battleHud.stage.getCamera().combined);
 		//battleHud.stage.draw();
-		if (!portalDest.isEmpty()){
-			portalDest = new String("");
-			dispose();
-		}	
-			
-	}
-	
-	public void enterPortal(String dest){
-		portalDest = dest;
-	}
-	
-	public void initBattle(){
-		game.setScreen(new BattleScreen(game));
 	}
 
 	@Override

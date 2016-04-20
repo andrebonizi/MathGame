@@ -1,6 +1,7 @@
 package Sprites;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.physics.box2d.Body;
@@ -25,28 +26,30 @@ public class Player extends Sprite{
 	private float stateTimer;
 	private boolean runningRight;
 	
-	public Player(World world, PlayScreen screen){
+	public Player(PlayScreen screen){
 		super(screen.getAtlas().findRegion("player"));
-		this.world = world;
+		
+		this.world = screen.getWorld();
 		currentState = State.STANDING;
 		previousState = State.STANDING;
 		stateTimer = 0;
 		runningRight = true;
 		
 		Array<TextureRegion> frames = new Array<TextureRegion>();
-		for(int i=0;i<9;i++)
-			frames.add(new TextureRegion(getTexture(), i * 128,0, 128, 256));
+		for(int i=0;i<8;i++)
+			frames.add(new TextureRegion(screen.getAtlas().findRegion("player"), i * 128,0, 128, 256));
 		playerRun = new Animation(0.1f,frames);
 		frames.clear();
 		
 		definePlayer();
-		playerStand = new TextureRegion(getTexture(), 0,0,128,256);
+		playerStand = new TextureRegion(screen.getAtlas().findRegion("player"), 0,0,128,256);
 		setBounds(0,0, 128 / MathGame.PPM, 256 / MathGame.PPM);
 		setRegion(playerStand);
+		
 	}
 	
 	public void update(float dt){
-		setPosition(b2body.getPosition().x - getWidth()/2, b2body.getPosition().y/2);
+		setPosition(b2body.getPosition().x - getWidth()/2, b2body.getPosition().y/2+0.5f);
 		setRegion(getFrame(dt));
 		
 	}
@@ -88,18 +91,28 @@ public class Player extends Sprite{
 	
 	public void definePlayer(){
 		BodyDef bdef = new BodyDef();
-		bdef.position.set(128 / MathGame.PPM,256 / MathGame.PPM);
+		bdef.position.set(12*128 / MathGame.PPM,256 / MathGame.PPM);
 		bdef.type = BodyDef.BodyType.DynamicBody;
 		b2body = world.createBody(bdef);
 		
 		FixtureDef fdef = new FixtureDef();
 		CircleShape shape = new CircleShape();
-		shape.setRadius(64/MathGame.PPM);
+		shape.setRadius(32/MathGame.PPM);
+		
+		fdef.filter.categoryBits = MathGame.PLAYER_BIT;
+		fdef.filter.maskBits = MathGame.GROUND_BIT | MathGame.WALL_BIT 
+							 |  MathGame.ENEMY_BIT;
 		
 		fdef.shape = shape;
 		b2body.createFixture(fdef);
 		
+		//EdgeShape arm = new EdgeShape();
+		//arm.set(new Vector2(-32/MathGame.PPM,64/MathGame.PPM),new Vector2(32/MathGame.PPM, 64/MathGame.PPM));
+		//fdef.shape = arm;
+		
+		//b2body.createFixture(fdef).setUserData("arm");
 	}
+
 	
 }
 
