@@ -8,6 +8,6 @@ public class QuestionsDisposer {
 	}
 	
 	public Question getQuestion(){
-		return new Question(rand.nextInt(10));
+		return new Question(rand.nextInt(10),rand.nextInt(10));
 	}
 }

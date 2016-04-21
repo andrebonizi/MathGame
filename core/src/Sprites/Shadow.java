@@ -87,6 +87,7 @@ public class Shadow extends Enemy{
 	@Override
 	public void initBattle() {
 		screen.initBattle();
+		this.setToDestroy = true;
 	}
 	
 	public void draw(Batch batch){
