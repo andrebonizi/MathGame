@@ -17,14 +17,20 @@ public class MathGame extends Game {
 	public static final short ENEMY_BIT = 16;
 	
 	public SpriteBatch batch;
+	public PlayScreen main;
 	
 	@Override
 	public void create () {
+		main = new PlayScreen(this);
 		batch = new SpriteBatch();
-		setScreen(new PlayScreen(this));
+		setScreen(main);
 		
 	}
 
+	public PlayScreen getMain(){
+		return main;
+	}
+	
 	@Override
 	public void render () {
 		super.render();

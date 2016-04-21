@@ -174,7 +174,7 @@ public class PlayScreen implements Screen{
 	}
 	
 	public void initBattle(){
-		game.setScreen(new BattleScreen(game));
+		game.setScreen(new Battle(game));
 	}
 
 	@Override
