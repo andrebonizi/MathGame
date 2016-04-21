@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -26,14 +27,23 @@ public class GameOverScreen implements Screen {
 		viewport = new FitViewport(MathGame.V_WIDTH, MathGame.V_HEIGHT,new OrthographicCamera());
 		stage = new Stage(viewport,((MathGame) game).batch);
 		
-		Label.LabelStyle font = new Label.LabelStyle(new BitmapFont(),Color.WHITE);
-		
 		Table table = new Table();
 		table.center();
 		table.setFillParent(true);
 		
-		Label gameOverLabel = new Label("GAME OVER", font);
+				
+		
+		BitmapFont font = new BitmapFont(Gdx.files.internal("./ProtestMed.fnt"),
+		Gdx.files.internal("./ProtestMed.png"), false);
+		Label.LabelStyle fontLabel = new Label.LabelStyle(font,Color.WHITE);
+		
+		Label gameOverLabel = new Label("GAME OVER", fontLabel);
+				
+		Label playAgainLabel = new Label("CLICK TO PLAY AGAIN", fontLabel);
+		
 		table.add(gameOverLabel).expandX();
+		table.row();
+		table.add(playAgainLabel).expandX().padTop(10);
 		
 		stage.addActor(table);
 		
@@ -47,6 +57,10 @@ public class GameOverScreen implements Screen {
 
 	@Override
 	public void render(float delta) {
+		if(Gdx.input.justTouched()){
+			game.setScreen(new PlayScreen((MathGame) game));
+			dispose();
+		}
 		Gdx.gl.glClearColor(0,0,0,1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		stage.draw();
@@ -78,8 +92,7 @@ public class GameOverScreen implements Screen {
 
 	@Override
 	public void dispose() {
-		// TODO Auto-generated method stub
-		
+		stage.dispose();
 	}
 
 }

@@ -6,4 +6,8 @@ public class QuestionsDisposer {
 	public QuestionsDisposer(int playerLevel) {
 		
 	}
+	
+	public Question getQuestion(){
+		return new Question(rand.nextInt(10));
+	}
 }

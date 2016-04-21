@@ -37,6 +37,7 @@ public class PlayScreen implements Screen{
 	private OrthographicCamera gamecam;
 	private Viewport gamePort;
 	private BattleHud battleHud;
+	private boolean isFullscreen;
 	
 	private TmxMapLoader maploader;
 	private TiledMap map;
@@ -56,6 +57,7 @@ public class PlayScreen implements Screen{
 	
 	public PlayScreen(MathGame game){
 		portalDest = new String("");
+		isFullscreen = false;
 		atlas = new TextureAtlas("MathAsset.pack");
 		this.game = game;
 		//texture = new Texture("badlogic.jpg");
@@ -109,6 +111,7 @@ public class PlayScreen implements Screen{
 			
 		if (Gdx.input.isKeyPressed(Input.Keys.LEFT) && player.b2body.getLinearVelocity().x >= -3) //  ## to limit velocity
 			player.b2body.applyLinearImpulse(new Vector2(-0.1f,0), player.b2body.getWorldCenter(), true);
+		
 	}
 	
 	public void update(float dt){

@@ -60,7 +60,7 @@ public class BattleScreen extends PlayScreen{
 		battleHud = new BattleHud(game.batch);
 		
 		maploader = new TmxMapLoader();
-		map = maploader.load("Stage1.tmx");
+		map = maploader.load("Stage1.tmx");	
 		renderer = new OrthogonalTiledMapRenderer(map, 1 / MathGame.PPM);
 		
 	}
